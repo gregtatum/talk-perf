@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>perf.html example &mdash; Call Tree Simple Example</title>
+    <link rel='stylesheet' href='examples.css'>
+  </head>
+  <body>
+    <h1>Call Tree Simple Example</h1>
+
+    <h3>Profiler takes a sample every 1ms:</h3>
+
+    <img src='./images/call-tree-simple-samples.png' style='height: 300px;' />
+
+    <h3>The call tree sums the times together into a single tree:</h3>
+
+    <img src='./images/call-tree-simple-tree.png' style='height: 300px;' />
+
+    <p>
+      There is JavaScript embedded on this page that creates a call tree in the above
+      shape. Collect a profile on this page, switch to the JS-only view in the call tree
+      to view the tree.
+    </p>
+
+    <script type="text/javascript">
+      function a() {
+        b();
+      }
+
+      function b() {
+        c();
+      }
+
+      function c() {
+        doWork();
+      }
+
+      function doWork() {
+        for (let i = 0; i < 1e7; i += Math.random()) {}
+      }
+
+      a();
+    </script>
+
+  </body>
+</html>
